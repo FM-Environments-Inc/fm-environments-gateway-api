@@ -54,7 +54,8 @@ const handleAuth = ({ req }) => {
   imports: [
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
       server: {
-        context: handleAuth,
+        // context: handleAuth,
+        cors: true,
       },
       driver: ApolloGatewayDriver,
       gateway: {
@@ -71,14 +72,14 @@ const handleAuth = ({ req }) => {
         },
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
-            { name: 'Auth', url: 'http://localhost:3001/graphql' },
+            //{ name: 'Auth', url: 'http://localhost:3001/graphql' },
             //{ name: 'Cron', url: 'http://localhost:3002/graphql' },
             //{ name: 'Notifications', url: 'http://localhost:3003/graphql' },
             { name: 'Settings', url: 'http://localhost:3004/graphql' },
-            { name: 'Simulation', url: 'http://localhost:3005/graphql' },
+            //{ name: 'Simulation', url: 'http://localhost:3005/graphql' },
             { name: 'TeamPlayer', url: 'http://localhost:3006/graphql' },
-            { name: 'TournamentMatche', url: 'http://localhost:3007/graphql' },
-            { name: 'User', url: 'http://localhost:3008/graphql' },
+            //{ name: 'TournamentMatches', url: 'http://localhost:3007/graphql' },
+            //{ name: 'User', url: 'http://localhost:3008/graphql' },
           ],
         }),
       },
